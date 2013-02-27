@@ -6,8 +6,8 @@ require 'wombat'
 Wombat.crawl do
   base_url "http://www.google.ru"
   path '/'
-	user_agent_alias 'Mac Safari'
+  user_agent_alias 'Mac Safari'
 	
-	headers css: 'head'	
+  headers css: 'head'	
 end
 ```
