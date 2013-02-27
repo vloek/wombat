@@ -31,15 +31,17 @@ module Wombat
       private
       def parser_for(metadata)
         url = "#{metadata[:base_url]}#{metadata[:path]}"
+        agent = metadata[:user_agent_alias] || 'Mac Safari'
         page = nil
         parser = nil
         begin
           if metadata[:document_format] == :html
+            @mechanize.user_agent_alias = agent
             @page = @mechanize.get(url)
             parser = @page.parser
             parser.headers = @page.header
           else
-            @page = RestClient.get(url)
+            @page = RestClient.get(url, user_agent: agent)
             parser = Nokogiri::XML @page
             parser.headers = @page.headers
           end

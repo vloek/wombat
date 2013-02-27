@@ -20,6 +20,10 @@ module Wombat
         self[:path] = url
       end
 
+      def user_agent_alias(agent_alias)
+        self[:user_agent_alias] = agent_alias
+      end 
+
       def document_format(format)
         self[:document_format] = format
       end
